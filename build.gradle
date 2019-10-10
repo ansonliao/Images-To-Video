@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ansonliao.github'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // For video
+    compile group: 'org.bytedeco', name: 'javacv', version: '1.5.1'
+    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.5.1'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'openblas', version: '0.3.5-1.4.4'
+    compile group: 'org.bytedeco', name: 'openblas-platform', version: '0.3.6-1.5.1'
+    // https://mvnrepository.com/artifact/javax.media/jmf
+    compile group: 'javax.media', name: 'jmf', version: '2.1.1e'
+
+    // For configuration
+    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.10'
+
+    // For log
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.28'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    // For testing
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
