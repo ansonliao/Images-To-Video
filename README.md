@@ -5,6 +5,41 @@ This is the Java base library generate video from images by JavaCV and Openblas.
 ## Requirements
 - Java: Java 8 and or up
 
+
+## How To
+Now the latest version: `0.1`
+
+### Maven
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+```
+
+```xml
+<dependency>
+  <groupId>com.github.ansonliao</groupId>
+  <artifactId>Images-To-Video</artifactId>
+  <version>LATEST_VERSION</version>
+</dependency>
+```
+
+### Gradle
+```groovy
+allprojects {
+  repositories {
+    ...
+    maven { url 'https://jitpack.io' }
+  }
+}
+
+dependencies {
+  implementation 'com.github.ansonliao:Images-To-Video:Tag'
+}
+```
 ## Simple usage: 
 
 Create video from image directory:
