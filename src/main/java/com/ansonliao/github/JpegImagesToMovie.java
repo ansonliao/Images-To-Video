@@ -67,6 +67,7 @@ import java.util.Vector;
  * QuickTime movie.
  * Refer: https://codeday.me/en/qa/20190306/4852.html
  */
+@Deprecated
 public class JpegImagesToMovie implements ControllerListener, DataSinkListener {
 
     Object waitSync = new Object();
