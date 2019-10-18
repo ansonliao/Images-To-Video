@@ -26,7 +26,7 @@ public class TestImagesToMovie {
         Path testResourceDir = Paths.get("src", "test", "resources");
         String imageDir = testResourceDir.toFile().getPath();
         String videoFileName = Paths.get(imageDir, "video1.mp4").toFile().getPath();
-        imagesToMovie.createVideo(imageDir, videoFileName);
+        imagesToMovie.createVideo(imageDir,false, videoFileName);
         Assert.assertTrue("Video file was not found.",
                 Paths.get(videoFileName).toFile().exists());
     }
