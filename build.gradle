@@ -1,13 +1,13 @@
 plugins {
-    id 'java'
+    id "java"
 }
 
-group 'com.ansonliao.github'
-version '0.1'
+group "com.ansonliao.github"
+version "0.2"
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
 
 repositories {
     mavenCentral()
@@ -15,16 +15,22 @@ repositories {
 
 dependencies {
     // For video
-    compile group: 'org.bytedeco', name: 'javacv', version: '1.5.1'
-    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.5.1'
-    compile group: 'org.bytedeco.javacpp-presets', name: 'openblas', version: '0.3.5-1.4.4'
-    compile group: 'org.bytedeco', name: 'openblas-platform', version: '0.3.6-1.5.1'
-    compile group: 'javax.media', name: 'jmf', version: '2.1.1e'
-    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.10'
-    compile group: 'commons-io', name: 'commons-io', version: '2.6'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.28'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.28'
+    implementation group: "org.jcodec", name: "jcodec", version: "0.2.5"
+    implementation group: "org.jcodec", name: "jcodec-javase", version: "0.2.5"
+    implementation group: "org.aeonbits.owner", name: "owner", version: "1.0.10"
+
+    // utilies
+    implementation group: "commons-io", name: "commons-io", version: "2.11.0"
+
+    // logging
+    implementation group: "org.slf4j", name: "slf4j-api", version: "2.0.6"
+    implementation group: "org.slf4j", name: "slf4j-simple", version: "2.0.6"
 
     // For testing
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.9.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.9.2"
+}
+
+test {
+    useJUnitPlatform()
 }

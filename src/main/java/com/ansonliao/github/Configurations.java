@@ -19,30 +19,14 @@ public class Configurations {
         @DefaultValue("mp4")
         String videoFormat();
 
-        @Key("image.width")
-        @DefaultValue("640")
-        int imageWidth();
-
-        @Key("image.height")
-        @DefaultValue("720")
-        int imageHeight();
-
-        @Key("video.quality")
-        @DefaultValue("0")
-        int videoQuality();
-
-        @Key("video.frame.rate")
-        @DefaultValue("1")
-        int videoFrameRate();
-
-        @Key("video.bit.rate")
-        @DefaultValue("9000")
-        int videoBitRate();
-
         @Key("image.supported.formats")
         @DefaultValue("jpeg, jpg, png")
         @Separator(",")
         List<String> imageSupportedFormats();
+
+        @Key("generated.video.fps")
+        @DefaultValue("3")
+        int videoFps();
 
     }
 }

@@ -1,48 +1,45 @@
 package com.ansonliao.github;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static java.util.stream.Collectors.toCollection;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestImagesToMovie {
+class TestImagesToMovie {
 
     @Test
-    public void testGetImages() {
+    void testGetImages() throws IOException {
         ImagesToMovie imagesToMovie = new ImagesToMovie();
         Path testResourceDir = Paths.get("src", "test", "resources");
-        Assert.assertEquals("Expected image files is 3.",
-                imagesToMovie.getImages(testResourceDir.toFile().getPath()).size(), 3);
+        assertEquals(3, imagesToMovie.getImages(testResourceDir.toFile().getPath()).size(), "Expected image files is 3.");
     }
 
     @Test
-    public void testCreateVideo1() {
+    void testCreateVideo1() throws IOException {
         ImagesToMovie imagesToMovie = new ImagesToMovie();
         Path testResourceDir = Paths.get("src", "test", "resources");
         String imageDir = testResourceDir.toFile().getPath();
         String videoFileName = Paths.get(imageDir, "video1.mp4").toFile().getPath();
-        imagesToMovie.createVideo(imageDir,false, videoFileName);
-        Assert.assertTrue("Video file was not found.",
-                Paths.get(videoFileName).toFile().exists());
+        imagesToMovie.createVideo(imageDir, false, videoFileName);
+        assertTrue(Paths.get(videoFileName).toFile().exists(), "Video file was not found.");
     }
 
     @Test
-    public void testCreateVideo2() {
+    void testCreateVideo2() throws IOException {
         ImagesToMovie imagesToMovie = new ImagesToMovie();
         Path testResourceDir = Paths.get("src", "test", "resources");
         String imageDir = testResourceDir.toFile().getPath();
-        ArrayList<String> images = imagesToMovie.getImages(imageDir).parallelStream()
-                .map(File::getAbsolutePath)
-                .sorted().collect(toCollection(ArrayList::new));
+        ArrayList<String> images = imagesToMovie.getImages(imageDir).parallelStream().map(File::getAbsolutePath).sorted().collect(toCollection(ArrayList::new));
         String videoFileName = Paths.get(imageDir, "video2.mp4").toFile().getPath();
         imagesToMovie.createVideo(images, videoFileName);
-        Assert.assertTrue("Video file was not found.",
-                Paths.get(videoFileName).toFile().exists());
+        assertTrue(Paths.get(videoFileName).toFile().exists(), "Video file was not found.");
     }
 
 }
