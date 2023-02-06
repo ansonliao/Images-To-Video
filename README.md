@@ -62,17 +62,13 @@ imagesToMovie.createVideo(images, videoFileName);
 ```
 
 ## Video Configurations
-Video configurations can places `video.properties` under the `resources` of classpath directory.
+Video configurations can place `video.properties` under the `resources` of classpath directory.
 
 | Key | Description | Default Value | Separator | Remark |
 | --- | ----------- | ------------- | --------- | ------ |
 | video.format | The video will be generated | mp4 | N/A | N/A |
-| image.width | The image width that video creator will be retrieved | 640 | N/A | N/A |
-| image.height | The image height that video creator will be retrieved | 720 | N/A| N/A |
-| video.quality | The video quality will be generated | 0 | N/A | 0 is the the max. quality |
-| video.frame.rate | The video frame rate | 1 | N/A | N/A |
-| video.bit.rate | The video bit rate | 9000 | N/A | N/A |
 | image.supported.formats| The image supported formats list | jpeg, jpg, png | Comma (,) | If you need to specified your image format, it will overwrite the default's, for example only support `png` and `jpeg`: image.supported.formats=png,jpeg |
+| video.fps | The FPS of the generated video | 3 | N/A | N/A |
 
 
 ## License

@@ -24,7 +24,7 @@ public class Configurations {
         @Separator(",")
         List<String> imageSupportedFormats();
 
-        @Key("generated.video.fps")
+        @Key("video.fps")
         @DefaultValue("3")
         int videoFps();
 
