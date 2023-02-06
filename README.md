@@ -7,7 +7,7 @@ This is the Java base library generate video from images by JavaCV and Openblas.
 
 
 ## How To
-Now the latest version: `0.1`
+Now the latest version: `0.2`
 
 ### Maven
 ```xml
