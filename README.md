@@ -1,6 +1,6 @@
 # Images-To-Video
 
-This is the Java base library generate video from images by JavaCV and Openblas.
+This is the Java base library generate video from images by [JCodec](http://jcodec.org/).
 
 ## Requirements
 - Java: Java 8 and or up

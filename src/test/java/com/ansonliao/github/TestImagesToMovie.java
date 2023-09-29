@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestImagesToMovie {
+    ImagesToMovie imagesToMovie = new ImagesToMovie();
 
     @Test
     void testGetImages() throws IOException {
@@ -40,6 +41,17 @@ class TestImagesToMovie {
         String videoFileName = Paths.get(imageDir, "video2.mp4").toFile().getPath();
         imagesToMovie.createVideo(images, videoFileName);
         assertTrue(Paths.get(videoFileName).toFile().exists(), "Video file was not found.");
+    }
+
+    @Test
+    void testCreateAnimatedGif() throws Exception {
+        Path testResourceDir = Paths.get("src", "test", "resources");
+        String imageDir = testResourceDir.toFile().getPath();
+        String gifFileName = Paths.get(imageDir, "animatedGif.gif").toFile().getPath();
+        System.out.println("GIF file path: " + gifFileName);
+        imagesToMovie.createAnimatedGif(imageDir, gifFileName, false);
+
+        assertTrue(Paths.get(gifFileName).toFile().exists(), "Gif file was not found.");
     }
 
 }

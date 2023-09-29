@@ -18,6 +18,8 @@ dependencies {
     implementation group: "org.jcodec", name: "jcodec", version: "0.2.5"
     implementation group: "org.jcodec", name: "jcodec-javase", version: "0.2.5"
     implementation group: "org.aeonbits.owner", name: "owner", version: "1.0.10"
+    // For gif generator
+    implementation group: "com.squareup", name: "gifencoder", version: "0.10.1"
 
     // utilies
     implementation group: "commons-io", name: "commons-io", version: "2.11.0"
