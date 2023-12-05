@@ -17,7 +17,7 @@ public class TestImagesToMovie {
         ImagesToMovie imagesToMovie = new ImagesToMovie();
         Path testResourceDir = Paths.get("src", "test", "resources");
         Assert.assertEquals("Expected image files is 3.",
-                imagesToMovie.getImages(testResourceDir.toFile().getPath()).size(), 3);
+                            imagesToMovie.getImages(testResourceDir.toFile().getPath()).size(), 3);
     }
 
     @Test
@@ -26,9 +26,9 @@ public class TestImagesToMovie {
         Path testResourceDir = Paths.get("src", "test", "resources");
         String imageDir = testResourceDir.toFile().getPath();
         String videoFileName = Paths.get(imageDir, "video1.mp4").toFile().getPath();
-        imagesToMovie.createVideo(imageDir,false, videoFileName);
+        imagesToMovie.createVideo(imageDir, false, videoFileName);
         Assert.assertTrue("Video file was not found.",
-                Paths.get(videoFileName).toFile().exists());
+                          Paths.get(videoFileName).toFile().exists());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TestImagesToMovie {
         String videoFileName = Paths.get(imageDir, "video2.mp4").toFile().getPath();
         imagesToMovie.createVideo(images, videoFileName);
         Assert.assertTrue("Video file was not found.",
-                Paths.get(videoFileName).toFile().exists());
+                          Paths.get(videoFileName).toFile().exists());
     }
 
 }

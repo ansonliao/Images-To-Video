@@ -35,7 +35,7 @@ public class ImagesToMovie {
     }
 
     protected void convertJPGtoMovie(ArrayList<String> links, String videoFileName) {
-        if (links.isEmpty() || links.size() == 0) {
+        if (links.isEmpty()) {
             logger.info("No images provided to create video.");
             return;
         }
@@ -60,7 +60,7 @@ public class ImagesToMovie {
         }
 
         logger.info("\nVideo has been created at {}", videoFileName);
-        logger.info("================================================");
+        logger.info("=========== Generate Video Completed ===========");
     }
 
     public ArrayList<File> getImages(String imageDir) {

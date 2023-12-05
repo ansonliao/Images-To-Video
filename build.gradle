@@ -1,13 +1,13 @@
 plugins {
-    id 'java'
+    id "java"
 }
 
-group 'com.ansonliao.github'
-version '0.1'
+group "com.ansonliao.github"
+version "0.2.0"
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+[compileJava, compileTestJava]*.options*.encoding = "UTF-8"
 
 repositories {
     mavenCentral()
@@ -15,16 +15,25 @@ repositories {
 
 dependencies {
     // For video
-    compile group: 'org.bytedeco', name: 'javacv', version: '1.5.1'
-    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.5.1'
-    compile group: 'org.bytedeco.javacpp-presets', name: 'openblas', version: '0.3.5-1.4.4'
-    compile group: 'org.bytedeco', name: 'openblas-platform', version: '0.3.6-1.5.1'
-    compile group: 'javax.media', name: 'jmf', version: '2.1.1e'
-    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.10'
-    compile group: 'commons-io', name: 'commons-io', version: '2.6'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.28'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.28'
+    implementation group: "org.bytedeco", name: "javacv", version: "1.5.9"
+    implementation group: "org.bytedeco", name: "javacv-platform", version: "1.5.9"
+    implementation group: "org.bytedeco.javacpp-presets", name: "openblas", version: "0.3.5-1.4.4"
+    implementation group: "org.bytedeco", name: "openblas-platform", version: "0.3.23-1.5.9"
+    implementation group: "javax.media", name: "jmf", version: "2.1.1e"
+    implementation group: "org.aeonbits.owner", name: "owner", version: "1.0.10"
+    implementation group: "commons-io", name: "commons-io", version: "2.7"
+    implementation group: "org.slf4j", name: "slf4j-api", version: "1.7.28"
+    implementation group: "org.slf4j", name: "slf4j-simple", version: "1.7.28"
 
     // For testing
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: "junit", name: "junit", version: "4.12"
+}
+
+task fatJar(type: Jar) {
+    archiveBaseName = "${rootProject.name}"
+    tasks.withType(Jar){
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
