@@ -3,11 +3,12 @@
 This is the Java base library generate video from images by JavaCV and Openblas.
 
 ## Requirements
-- Java: Java 8 and or up
+- Java: >= 17
+- Gradle: >= 8.2.1 
 
 
 ## How To
-Now the latest version: `0.1`
+Now the latest version: `0.2`
 
 ### Maven
 ```xml
