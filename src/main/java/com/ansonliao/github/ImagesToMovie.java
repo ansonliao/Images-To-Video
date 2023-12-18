@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.stream.Stream;
 
 import static com.ansonliao.github.Configurations.getVideoConfigs;
 import static com.ansonliao.github.utils.ImageUtils.isSupportedImageFormat;
@@ -20,13 +18,12 @@ import static org.bytedeco.opencv.helper.opencv_imgcodecs.cvLoadImage;
 public class ImagesToMovie {
     private static final Logger logger = LoggerFactory.getLogger(ImagesToMovie.class);
 
-    public void createVideo(String imageDir, boolean isReversed, String videoFileName) {
-        Stream<String> streamImages = getImages(imageDir)
+    public void createVideo(String imageDir, String videoFileName) {
+        ArrayList<String> images = getImages(imageDir)
                 .parallelStream()
-                .map(File::getAbsolutePath);
-        ArrayList<String> images = isReversed
-                ? streamImages.sorted(Comparator.reverseOrder()).collect(toCollection(ArrayList::new))
-                : streamImages.sorted().collect(toCollection(ArrayList::new));
+                .map(File::getAbsolutePath)
+                .sorted()
+                .collect(toCollection(ArrayList::new));
         convertJPGtoMovie(images, videoFileName);
     }
 
@@ -71,5 +68,4 @@ public class ImagesToMovie {
                 .forEach(images::add);
         return images;
     }
-
 }
