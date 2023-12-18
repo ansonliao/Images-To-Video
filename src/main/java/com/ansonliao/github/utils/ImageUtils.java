@@ -49,6 +49,20 @@ public class ImageUtils {
         }};
     }
 
+    public static Map<ImageResolution, Integer> getTheMinResolutionOfImage(List<File> images) throws IOException {
+        List<BufferedImage> bufferedImages = new ArrayList<>();
+        for (File image : images) {
+            bufferedImages.add(ImageIO.read(image));
+        }
+        int minHeight = bufferedImages.stream().map(BufferedImage::getHeight).min(Integer::compare).orElse(0);
+        int minWidth = bufferedImages.stream().map(BufferedImage::getWidth).min(Integer::compare).orElse(0);
+
+        return new HashMap() {{
+            put(ImageResolution.HEIGHT, minHeight);
+            put(ImageResolution.WIDTH, minWidth);
+        }};
+    }
+
     private static Map<ImageResolution, Integer> getImageResolution(File imageFile) throws IOException {
         EnumMap<ImageResolution, Integer> imageResolution = new EnumMap<>(ImageResolution.class);
         BufferedImage bufferedImage = ImageIO.read(imageFile);
