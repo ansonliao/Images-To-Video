@@ -26,11 +26,7 @@ public class TestImagesToMovie {
         Path testResourceDir = Paths.get("src", "test", "resources");
         String imageDir = testResourceDir.toFile().getPath();
         String videoFileName = Paths.get(imageDir, "video1.mp4").toFile().getPath();
-<<<<<<< HEAD
         imagesToMovie.createVideo(imageDir, false, videoFileName);
-=======
-        imagesToMovie.createVideo(imageDir, videoFileName);
->>>>>>> parent of cef91ff (Fixed test case bug)
         Assert.assertTrue("Video file was not found.",
                           Paths.get(videoFileName).toFile().exists());
     }
