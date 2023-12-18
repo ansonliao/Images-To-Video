@@ -43,6 +43,5 @@ public class Configurations {
         @DefaultValue("jpeg, jpg, png")
         @Separator(",")
         List<String> imageSupportedFormats();
-
     }
 }
