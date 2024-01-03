@@ -6,7 +6,8 @@ import org.aeonbits.owner.ConfigFactory;
 import java.util.List;
 
 public class Configurations {
-    private static VideoConfigs videoConfigs = ConfigFactory.create(VideoConfigs.class, System.getenv(), System.getProperties());
+    private static VideoConfigs videoConfigs = ConfigFactory.create(VideoConfigs.class, System.getenv(),
+                                                                    System.getProperties());
 
     public static VideoConfigs getVideoConfigs() {
         return videoConfigs;

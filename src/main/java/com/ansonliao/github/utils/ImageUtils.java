@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.ansonliao.github.Configurations.getVideoConfigs;
-import static com.ansonliao.github.utils.ExceptionUtils.checkDirectoryExistedOrNot;
+import static com.ansonliao.github.exceptions.Exceptions.checkIfDirectoryExisted;
 import static java.util.stream.Collectors.toList;
 
 public class ImageUtils {
@@ -26,7 +26,7 @@ public class ImageUtils {
     }
 
     public static List<File> getImagesFromDirectory(String imageDir) throws IOException {
-        checkDirectoryExistedOrNot(imageDir).throwMessage("The directory is not existed, path: " + imageDir);
+        checkIfDirectoryExisted(imageDir).throwMessage("The directory is not existed, path: " + imageDir);
         ArrayList<File> images = new ArrayList<>();
         File f = new File(imageDir);
         Arrays.stream(f.listFiles())

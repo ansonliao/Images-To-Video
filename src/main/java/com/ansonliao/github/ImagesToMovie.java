@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,7 +17,9 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static com.ansonliao.github.Configurations.getVideoConfigs;
-import static com.ansonliao.github.utils.ExceptionUtils.checkFileExistedOrNot;
+import static com.ansonliao.github.exceptions.Exceptions.checkIfDirectoryExisted;
+import static com.ansonliao.github.exceptions.Exceptions.checkIfFile;
+import static com.ansonliao.github.exceptions.Exceptions.checkIfFileExisted;
 import static com.ansonliao.github.utils.ImageUtils.getImagesFromDirectory;
 import static com.ansonliao.github.utils.ImageUtils.getTheMaxResolutionOfImage;
 import static java.util.stream.Collectors.toCollection;
@@ -45,12 +48,19 @@ public class ImagesToMovie {
             logger.info("No images provided to create video.");
             return;
         }
-        logger.info("========== Generate Video From Images ==========");
+        logger.info("--== Generate Video From Images ==--");
         logger.info("Check all the images existing...");
         for (String link : links) {
-            checkFileExistedOrNot(link).throwMessage("The image is not existed, path:  " + link);
+            checkIfFileExisted(link).throwMessage("The image is not existed, path:  " + link);
         }
+
+        // check video output director and video file path
+        checkIfFile(videoFileName);
+        checkIfDirectoryExisted(Paths.get(videoFileName).getParent().toString());
+        // create the video output directory if not existed
+        // Files.createDirectories(Paths.get(new File(videoFileName).getParent()));
         logger.info("Video fill will be created: {}", videoFileName);
+
         links.forEach(link -> logger.info("Image: {}", link));
         OpenCVFrameConverter.ToIplImage grabberConverter = new OpenCVFrameConverter.ToIplImage();
 
@@ -79,6 +89,6 @@ public class ImagesToMovie {
         }
 
         logger.info("\nVideo has been created at {}", videoFileName);
-        logger.info("=========== Generate Video Completed ===========");
+        logger.info("--== Generate Video Completed ==--");
     }
 }
